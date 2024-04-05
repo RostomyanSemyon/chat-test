@@ -26,9 +26,17 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/api/v1/auth/**")
                         .permitAll()
+                        .requestMatchers("/h2-console/**")
+                        .permitAll()
                         .anyRequest()
                         .authenticated()
                 )
+                //for h2 console support in browser
+                .headers(httpSecurityHeadersConfigurer -> {
+                    httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> {
+                        frameOptionsConfig.disable();
+                    });
+                })
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(withDefaults());
