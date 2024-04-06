@@ -1,5 +1,6 @@
 package com.example.chattest.auth;
 
+import com.example.chattest.auth.service.AuthService;
 import com.example.chattest.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

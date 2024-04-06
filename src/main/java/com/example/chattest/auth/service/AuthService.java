@@ -1,7 +1,8 @@
-package com.example.chattest.auth;
+package com.example.chattest.auth.service;
 
 
-import com.example.chattest.config.JwtService;
+import com.example.chattest.auth.AuthRequest;
+import com.example.chattest.auth.AuthResponse;
 import com.example.chattest.dto.RegisterRequest;
 import com.example.chattest.model.user.User;
 import com.example.chattest.model.user.UserRole;

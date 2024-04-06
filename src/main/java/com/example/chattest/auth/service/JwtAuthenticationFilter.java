@@ -1,5 +1,6 @@
-package com.example.chattest.config;
+package com.example.chattest.auth.service;
 
+import com.example.chattest.auth.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
