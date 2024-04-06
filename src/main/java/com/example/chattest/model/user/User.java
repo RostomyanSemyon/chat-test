@@ -1,18 +1,20 @@
 package com.example.chattest.model.user;
 
+import com.example.chattest.model.message.Message;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(schema = "public", name = "_user")
 public class User implements UserDetails {
     @Id
     @GeneratedValue
@@ -20,6 +22,8 @@ public class User implements UserDetails {
     private String userName;
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Message> messages;
     @Enumerated(EnumType.STRING)
     private UserRole role;
 

@@ -1,5 +1,6 @@
 package com.example.chattest.model;
 
+import com.example.chattest.model.message.Message;
 import jakarta.persistence.*;
 
 import java.util.List;
