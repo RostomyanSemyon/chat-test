@@ -32,7 +32,7 @@ public class MessageController {
     @GetMapping
     public ResponseEntity<FetchMessageResponse> fetchMessage(@RequestBody FetchMessageRequest request) {
         return new ResponseEntity<>(
-                messageService.fetchHistory(request.charRoomId(), request.userName()),
+                messageService.fetchHistory(request.chatRoomId(), request.userName()),
                 HttpStatus.OK
         );
     }

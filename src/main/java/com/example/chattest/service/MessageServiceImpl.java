@@ -1,6 +1,7 @@
 package com.example.chattest.service;
 
 import com.example.chattest.api.MessageService;
+import com.example.chattest.clock.Clock;
 import com.example.chattest.dto.CreateMessageResponse;
 import com.example.chattest.dto.FetchMessageResponse;
 import com.example.chattest.model.FetchHistoryEvent;
@@ -24,16 +25,21 @@ public class MessageServiceImpl implements MessageService {
     private final FetchEventHistoryRepository fetchEventHistoryRepository;
     private final UserRepository userRepository;
 
+    private final Clock clock;
+
     @Autowired
     public MessageServiceImpl(
             MessageRepository messageRepository,
             ChatRoomRepository chatRoomRepository,
             FetchEventHistoryRepository fetchEventHistoryRepository,
-            UserRepository userRepository) {
+            UserRepository userRepository,
+            Clock clock
+    ) {
         this.messageRepository = messageRepository;
         this.chatRoomRepository = chatRoomRepository;
         this.fetchEventHistoryRepository = fetchEventHistoryRepository;
         this.userRepository = userRepository;
+        this.clock = clock;
     }
 
     @Override
@@ -46,7 +52,7 @@ public class MessageServiceImpl implements MessageService {
                         .orElseThrow(() -> new RuntimeException("Room was not found")))
                 .user(userRepository.findUserByUserName(userName)
                         .orElseThrow(() -> new RuntimeException("User was not found")))
-                .sendTime(LocalDateTime.now())
+                .sendTime(clock.now())
                 .text(text)
                 .build();
         messageRepository.save(message);
@@ -59,7 +65,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     @Transactional
     public FetchMessageResponse fetchHistory(Long chatRoomId, String userName) {
-        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime currentDate = clock.now();
 
         FetchHistoryEvent fetchHistoryEvent = fetchEventHistoryRepository.findFirstByChatRoomIdAndUserNameAndLastFetchDateBeforeOrderByLastFetchDateDesc(chatRoomId, userName, currentDate);
 

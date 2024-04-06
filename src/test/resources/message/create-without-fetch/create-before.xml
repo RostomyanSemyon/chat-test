@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <CHAT_ROOM ID="1"/>
+    <_USER ID="1" ROLE="USER" USER_NAME="first"/>
+    <_USER ID="2" ROLE="USER" USER_NAME="second"/>
+
+    <MESSAGE ID="10" CHAT_ROOM_ID="1" USER_ID="2" SEND_TIME="2023-01-01" TEXT="second message"/>
+    <FETCH_HISTORY_EVENT ID="10" LAST_FETCH_DATE="2023-12-25" USER_NAME="first" CHAT_ROOM_ID="1"/>
+
+</dataset>
