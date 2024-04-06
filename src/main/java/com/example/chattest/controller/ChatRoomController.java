@@ -2,18 +2,15 @@ package com.example.chattest.controller;
 
 import com.example.chattest.api.ChatRoomService;
 import com.example.chattest.dto.ChatRoomDto;
-import lombok.RequiredArgsConstructor;
+import com.example.chattest.dto.JoinRoomDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
 
 @RestController
-@RequestMapping("/room")
+@RequestMapping("api/v1/room")
 public class ChatRoomController {
     private final ChatRoomService chatRoomService;
 
@@ -25,5 +22,10 @@ public class ChatRoomController {
     @GetMapping("/{id}")
     public ResponseEntity<ChatRoomDto> getRoomById(@PathVariable Long id) {
         return new ResponseEntity<>(chatRoomService.getById(id), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<JoinRoomDto> getRoomById(@RequestBody JoinRoomDto dto) {
+        return new ResponseEntity<>(chatRoomService.joinUserToRoom(dto), HttpStatus.OK);
     }
 }

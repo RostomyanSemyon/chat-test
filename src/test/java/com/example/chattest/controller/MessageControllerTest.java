@@ -64,7 +64,7 @@ public class MessageControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json(responseJson));;
+                .andExpect(MockMvcResultMatchers.content().json(responseJson));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class MessageControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json(responseJson));;
+                .andExpect(MockMvcResultMatchers.content().json(responseJson));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class MessageControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json(responseJson));;
+                .andExpect(MockMvcResultMatchers.content().json(responseJson));
     }
 
     @Test

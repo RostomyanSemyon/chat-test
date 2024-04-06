@@ -1,5 +1,6 @@
 package com.example.chattest.model.user;
 
+import com.example.chattest.model.ChatRoom;
 import com.example.chattest.model.message.Message;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,6 +25,10 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Message> messages;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chat_room_id", nullable = true)
+    private ChatRoom chatRoom;
     @Enumerated(EnumType.STRING)
     private UserRole role;
 

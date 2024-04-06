@@ -1,0 +1,4 @@
+<dataset>
+    <CHAT_ROOM ID="1"/>
+    <_USER ID="1" ROLE="USER" USER_NAME="first" CHAT_ROOM_ID="1"/>
+</dataset>
