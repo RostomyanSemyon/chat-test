@@ -1,4 +1,4 @@
-package com.example.chattest.model.message;
+package com.example.chattest.model;
 
 import com.example.chattest.model.ChatRoom;
 import com.example.chattest.model.user.User;

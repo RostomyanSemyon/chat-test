@@ -2,7 +2,6 @@ package com.example.chattest.controller;
 
 import com.example.chattest.api.MessageService;
 import com.example.chattest.dto.CreateMessageRequest;
-import com.example.chattest.dto.CreateMessageResponse;
 import com.example.chattest.dto.FetchMessageRequest;
 import com.example.chattest.dto.FetchMessageResponse;
 import jakarta.validation.Valid;

@@ -5,7 +5,7 @@ import com.example.chattest.clock.Clock;
 import com.example.chattest.dto.CreateMessageResponse;
 import com.example.chattest.dto.FetchMessageResponse;
 import com.example.chattest.model.FetchHistoryEvent;
-import com.example.chattest.model.message.Message;
+import com.example.chattest.model.Message;
 import com.example.chattest.repository.ChatRoomRepository;
 import com.example.chattest.repository.FetchEventHistoryRepository;
 import com.example.chattest.repository.MessageRepository;
@@ -57,7 +57,6 @@ public class MessageServiceImpl implements MessageService {
                 .build();
         messageRepository.save(message);
 
-        //TODO почему возвращаются все сообщения
         fetchMessageResponse.getMessages().add(new CreateMessageResponse(userName, text));
         return fetchMessageResponse;
     }
@@ -79,7 +78,7 @@ public class MessageServiceImpl implements MessageService {
         FetchHistoryEvent newFetchHistoryEvent = FetchHistoryEvent.builder()
                 .userName(userName)
                 .lastFetchDate(currentDate)
-                .chatRoomId(chatRoomId) //TODO здесь возвращается null
+                .chatRoomId(chatRoomId)
                 .build();
 
         fetchEventHistoryRepository.save(newFetchHistoryEvent);

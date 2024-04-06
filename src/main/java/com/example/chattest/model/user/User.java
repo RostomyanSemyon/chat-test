@@ -1,7 +1,7 @@
 package com.example.chattest.model.user;
 
 import com.example.chattest.model.ChatRoom;
-import com.example.chattest.model.message.Message;
+import com.example.chattest.model.Message;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

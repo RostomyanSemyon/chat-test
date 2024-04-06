@@ -34,24 +34,20 @@ public class AuthService {
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
 
-        return AuthResponse.builder()
-                .accessToken(jwtToken)
-                .build();
+        return new AuthResponse(jwtToken);
     }
 
     public AuthResponse authenticate(AuthRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getUserName(),
-                        request.getPassword()
+                        request.userName(),
+                        request.password()
                 )
         );
-        var user = userRepository.findUserByUserName(request.getUserName())
+        var user = userRepository.findUserByUserName(request.userName())
                 .orElseThrow();
 
         var jwtToken = jwtService.generateToken(user);
-        return AuthResponse.builder()
-                .accessToken(jwtToken)
-                .build();
+        return new AuthResponse(jwtToken);
     }
 }
