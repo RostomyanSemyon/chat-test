@@ -3,7 +3,7 @@
 3. Start ChatTestApplication
 4. For databese I am using in-memory H2 db. For connecting to DB use /h2-console endpoint. user/pass = sa/sa
 5. App supports few endpoints for(only rest implementation)
-  - user register/auth
+  - user register/auth(after register user please use token to send other requests)
   - join the chat room
   - send/fetch messagesg to/from chat room
 
